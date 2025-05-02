@@ -1,0 +1,19 @@
+<ion-header>
+    <search-bar />
+</ion-header>
+
+<ion-content [fullscreen]="true" class="[--offset-top:0px!important] [--background:none]">
+    <router-outlet></router-outlet>
+</ion-content>
+
+<ion-footer
+    class="p-3 bg-cod-gray-950/80 backdrop-blur-md flex justify-evenly items-center mb-2.5 mx-2.5 rounded-md border-cod-gray-900 border shadow-[0px_0px_20px_0px_theme(colors.black/.5)] w-auto">
+    <a routerLink="feed" class="flex flex-col justify-center items-center">
+        <ion-icon name="home" class="text-2xl"></ion-icon>
+        <ion-label class="text-sm">Home</ion-label>
+    </a>
+    <a routerLink="user" class="flex flex-col justify-center items-center">
+        <ion-icon name="person-circle-outline" class="text-2xl"></ion-icon>
+        <ion-label class="text-sm">Perfil</ion-label>
+    </a>
+</ion-footer>

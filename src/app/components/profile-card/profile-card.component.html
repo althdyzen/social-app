@@ -1,0 +1,62 @@
+<ion-card
+    class="[--background:rgba(12,12,12,.8)] backdrop-blur-lg border-shark-950 border border-solid contain-none overflow-visible rounded-xl p-2 shadow-xl shadow-black/80 mx-2.5">
+    <div class="flex flex-col gap-4 relative">
+        <ion-icon name="person-circle-outline" class="size-40 mx-auto rounded-full overflow-hidden"></ion-icon>
+        <h1 class="text-3xl text-center mt-4 text-gray-200">
+            {{ user.name }}
+        </h1>
+
+        <div class="flex justify-center items-center flex-row">
+            <div class="flex justify-center items-center flex-col flex-1">
+                <span class="text-xl">{{ (user.posts && user.posts.length) || 0 }}</span>
+                <span>Posts</span>
+            </div>
+            <div class="flex justify-center items-center flex-col flex-1">
+                <span class="text-xl">{{ user.followers || 0 }}</span>
+                <span>Seguidores</span>
+            </div>
+            <div class="flex justify-center items-center flex-col flex-1">
+                <span class="text-xl">{{ user.following || 0 }}</span>
+                <span>Seguindo</span>
+            </div>
+        </div>
+
+        <ion-button *ngIf="!user.isOwner" expand="block" fill="solid" shape="round" class="mx-auto"
+            (click)="toggleFollow()"
+            class="mx-auto w-48 {{ user.isFollowing ? '[--ion-color-primary:hsl(218.43deg_60%_65.1%)]' : '' }}">
+            <span *ngIf="!followStage && !user.isFollowing">Seguir</span>
+            <span *ngIf="!followStage && user.isFollowing">Seguindo</span>
+            <ion-spinner *ngIf="followStage" name="crescent"></ion-spinner>
+        </ion-button>
+
+        <ion-icon id="click-trigger" *ngIf="user.isOwner" name="ellipsis-vertical"
+            class="absolute top-2 right-2 text-lg cursor-pointer">
+        </ion-icon>
+        <ion-popover trigger="click-trigger" *ngIf="user.isOwner" [dismissOnSelect]="true" triggerAction="click"
+            class="[--background:none] [--width:auto] [--box-shadow:0_0_1rem_black] select-none">
+            <ng-template>
+                <div
+                    class="[--background:none] bg-cod-gray-950/80 backdrop-blur-xl flex flex-col justify-center items-center rounded-lg">
+                    <span (click)="logout()"
+                        class="cursor-pointer px-3 py-2 w-full hover:bg-white/5 transition-colors flex items-center gap-4">
+                        <ion-icon name="log-out-outline" class="text-xl"></ion-icon>
+                        <span>
+                            Sair
+                        </span>
+                    </span>
+                    <span (click)="openDeleteModal()"
+                        class="cursor-pointer px-3 py-2 w-full hover:bg-white/5 transition-colors flex items-center gap-4 text-red-400">
+                        <ion-icon name="trash-outline"></ion-icon>
+                        <span>
+                            Excluir conta
+                        </span>
+                    </span>
+                </div>
+            </ng-template>
+        </ion-popover>
+        <ion-alert [isOpen]="isDeleteModalOpen" subHeader="Essa é uma ação irreversível!"
+            (ionAlertDidDismiss)="isDeleteModalOpen = false" message="Você tem certeza que quer excluir sua conta?"
+            [buttons]="deleteModalButtons"
+            class="[&>div]:!rounded-xl [&_button]:!rounded-lg [&_button]:transition-colors [&_button]:!text-orient-300 [&_.alert-button-role-confirm:hover]:bg-red-600/5 [&_button:hover]:bg-orient-600/5  [&>div]:!outline-none [&_.alert-button-role-confirm]:!text-red-400"></ion-alert>
+    </div>
+</ion-card>

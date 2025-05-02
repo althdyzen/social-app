@@ -1,0 +1,9 @@
+import { HttpEvent, HttpHandlerFn, HttpRequest } from "@angular/common/http";
+import { Observable } from "rxjs";
+
+export function loggerInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+	console.groupCollapsed("Logger Interceptor");
+	console.log(req);
+	console.groupEnd();
+	return next(req);
+}

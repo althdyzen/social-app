@@ -1,0 +1,10 @@
+<div class="overflow-auto mt-14">
+    <create-post-card class="block overflow-auto" />
+    <hr class="w-4/5 mx-auto border-shark-500">
+    <div class="flex justify-center items-center flex-wrap min-h-36">
+        <post-card *ngFor="let post of posts" [post]="post" class="basis-full" />
+        <div *ngIf="!posts">
+            Sem posts para mostrar
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<ion-card
+    class="[--background:none] bg-cod-gray-950/80 backdrop-blur-lg border-shark-950 border border-solid rounded-xl p-4 flex flex-col gap-4">
+    <form class="space-y-4" [formGroup]="postForm" (ngSubmit)="createPost()">
+        <div class="space-y-2">
+            <h4 class="text-center text-shark-300 text-lg font-semibold">Compartilhe uma ideia!</h4>
+            <div class="relative group">
+                <ion-input formControlName="title" name="title" type="text" placeholder="" mode="ios" required
+                    class="[--background:none] [--highlight-color:theme(colors.orient.500)!important] [--padding-start:1rem] rounded-md overflow-hidden border-[rgba(255,255,255,0.1)] border focus-within:[--background:transparent] focus-within:border-shark-900 transition-all">
+                </ion-input>
+                <span
+                    class="absolute top-1/2 pointer-events-none -translate-y-1/2 group-has-[input:focus]:top-0 group-has-[input:not(:placeholder-shown)]:top-0 group-has-[input:focus]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:text-shark-100 opacity-100 px-1 rounded-sm leading-snug group-has-[input:focus]:text-shark-100 z-10 text-[#5d5f60] left-4 transition-all">
+                    Título
+                </span>
+            </div>
+            <div class="relative group">
+                <ion-textarea formControlName="body" name="body" type="text" placeholder="" mode="ios" [counter]="true"
+                    rows="8" required maxlength="300"
+                    class="[--background:none] [--highlight-color:theme(colors.orient.500)!important] [--padding-start:1rem] rounded-md overflow-hidden border-[rgba(255,255,255,0.1)] border focus-within:[--background:transparent] focus-within:border-shark-900 transition-all">
+                </ion-textarea>
+                <span
+                    class="absolute top-6 pointer-events-none -translate-y-1/2 group-has-[textarea:focus]:top-0 group-has-[textarea:not(:placeholder-shown)]:top-0 group-has-[textarea:focus]:bg-shark-700 group-has-[textarea:not(:placeholder-shown)]:bg-shark-700 group-has-[textarea:not(:placeholder-shown)]:text-shark-100 opacity-100 px-1 rounded-sm leading-snug group-has-[textarea:focus]:text-shark-100 z-10 text-[#5d5f60] left-4 transition-all">
+                    Corpo do texto
+                </span>
+            </div>
+        </div>
+        <div>
+            <ion-button type="submit" expand="block" fill="solid" shape="round">
+                <span *ngIf="true">Postar</span>
+                <ion-spinner *ngIf="false" name="crescent"></ion-spinner>
+            </ion-button>
+        </div>
+    </form>
+</ion-card>

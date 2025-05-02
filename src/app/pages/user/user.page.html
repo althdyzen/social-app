@@ -1,0 +1,7 @@
+<div class="mt-16">
+    <profile-card [user]="user" />
+    <div class="grow">
+        <post-card *ngFor="let post of user.posts" [authorName]="user.name" [authorNick]="user.nick"
+            [post]="post"></post-card>
+    </div>
+</div>

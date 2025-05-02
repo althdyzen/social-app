@@ -1,0 +1,78 @@
+<ion-content [fullscreen]="true"
+    class="[--background:var(--bg-stacked-peaks)_center_/_cover] [--keyboard-offset:0_!important]">
+    <ion-col class="flex justify-center items-center h-full">
+        <ion-card
+            class="w-full [--background:rgba(12,12,12,.8)] backdrop-blur-lg border-shark-950 border-2 border-solid rounded-3xl overflow-hidden p-2 shadow-2xl">
+            <ion-card-header>
+                <ion-card-title class="text-3xl">Cadastre-se</ion-card-title>
+                <ion-card-subtitle class="uppercase font-bold">ou
+                    <a routerLink="/signin" class="text-blue-400">entre em uma conta</a>
+                </ion-card-subtitle>
+            </ion-card-header>
+
+            <form id="signup" [formGroup]="signUpForm" (ngSubmit)="signup()">
+                <ion-card-content class="flex flex-col gap-2">
+                    <div class="relative group">
+                        <ion-input formControlName="name" type="text" placeholder="" maxlength="50" [clearInput]="true"
+                            mode="ios" required
+                            class="[--background:none] [--highlight-color:var(--color-orient-500)!important] [--padding-start:1rem] rounded-md overflow-hidden border-[rgba(255,255,255,0.1)] border focus-within:[--background:transparent] focus-within:border-shark-900 transition-all has-[input:not(:placeholder-shown):invalid]:border-red-600 has-[input:not(:placeholder-shown):invalid]:[--highlight-color:theme(colors.red.600)!important] has-[input:not(:placeholder-shown):valid]:border-green-600 has-[input:not(:placeholder-shown):valid]:[--highlight-color:theme(colors.green.600)!important]">
+                        </ion-input>
+                        <span
+                            class="absolute top-1/2 pointer-events-none -translate-y-1/2 group-has-[input:focus]:top-0 group-has-[input:not(:placeholder-shown)]:top-0 group-has-[input:focus]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:text-shark-100 opacity-100 px-1 rounded-sm leading-snug group-has-[input:focus]:text-shark-100 z-10 text-[#5d5f60] left-4 transition-all">
+                            Nome
+                        </span>
+                    </div>
+
+                    <div class="relative group">
+                        <ion-input formControlName="nick" type="text" placeholder="" maxlength="50" [clearInput]="true"
+                            mode="ios" required
+                            class="[--background:none] [--highlight-color:var(--color-orient-500)!important] [--padding-start:1rem] rounded-md overflow-hidden border-[rgba(255,255,255,0.1)] border focus-within:[--background:transparent] focus-within:border-shark-900 transition-all has-[input:not(:placeholder-shown):invalid]:border-red-600 has-[input:not(:placeholder-shown):invalid]:[--highlight-color:theme(colors.red.600)!important] has-[input:not(:placeholder-shown):valid]:border-green-600 has-[input:not(:placeholder-shown):valid]:[--highlight-color:theme(colors.green.600)!important]"></ion-input>
+                        <span
+                            class="absolute top-1/2 pointer-events-none -translate-y-1/2 group-has-[input:focus]:top-0 group-has-[input:not(:placeholder-shown)]:top-0 group-has-[input:focus]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:text-shark-100 opacity-100 px-1 rounded-sm leading-snug group-has-[input:focus]:text-shark-100 z-10 text-[#5d5f60] left-4 transition-all">
+                            Apelido
+                        </span>
+                    </div>
+                    <div class="relative group">
+                        <ion-input formControlName="email" type="email" placeholder="" maxlength="50"
+                            [clearInput]="true" mode="ios" required
+                            class="[--background:none] [--highlight-color:var(--color-orient-500)!important] [--padding-start:1rem] rounded-md overflow-hidden border-[rgba(255,255,255,0.1)] border focus-within:[--background:transparent] focus-within:border-shark-900 transition-all has-[input:not(:placeholder-shown):invalid]:border-red-600 has-[input:not(:placeholder-shown):invalid]:[--highlight-color:theme(colors.red.600)!important] has-[input:not(:placeholder-shown):valid]:border-green-600 has-[input:not(:placeholder-shown):valid]:[--highlight-color:theme(colors.green.600)!important]">
+                        </ion-input>
+                        <span
+                            class="absolute top-1/2 pointer-events-none -translate-y-1/2 group-has-[input:focus]:top-0 group-has-[input:not(:placeholder-shown)]:top-0 group-has-[input:focus]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:text-shark-100 opacity-100 px-1 rounded-sm leading-snug group-has-[input:focus]:text-shark-100 z-10 text-[#5d5f60] left-4 transition-all">
+                            Email
+                        </span>
+                    </div>
+                    <div class="relative group">
+                        <ion-input formControlName="password" type="password" placeholder="" [clearOnEdit]="false"
+                            mode="ios" [clearInput]="true" required
+                            class="[--background:none] [--highlight-color:var(--color-orient-500)!important] [--padding-start:1rem] rounded-md overflow-hidden border-[rgba(255,255,255,0.1)] border focus-within:[--background:transparent] focus-within:border-shark-900 transition-all has-[input:not(:placeholder-shown):invalid]:border-red-600 has-[input:not(:placeholder-shown):invalid]:[--highlight-color:theme(colors.red.600)!important] has-[input:not(:placeholder-shown):valid]:border-green-600 has-[input:not(:placeholder-shown):valid]:[--highlight-color:theme(colors.green.600)!important]">
+                            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+                        </ion-input>
+                        <span
+                            class="absolute top-1/2 pointer-events-none -translate-y-1/2 group-has-[input:focus]:top-0 group-has-[input:not(:placeholder-shown)]:top-0 group-has-[input:focus]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:text-shark-100 opacity-100 px-1 rounded-sm leading-snug group-has-[input:focus]:text-shark-100 z-10 text-[#5d5f60] left-4 transition-all">
+                            Senha
+                        </span>
+                    </div>
+                    <div class="relative group">
+                        <ion-input formControlName="confirmPassword" type="password" placeholder=""
+                            [clearOnEdit]="false" mode="ios" [clearInput]="true" required
+                            class="[--background:none] [--highlight-color:var(--color-orient-500)!important] [--padding-start:1rem] rounded-md overflow-hidden border-[rgba(255,255,255,0.1)] border focus-within:[--background:transparent] focus-within:border-shark-900 transition-all has-[input:not(:placeholder-shown):invalid]:border-red-600 has-[input:not(:placeholder-shown):invalid]:[--highlight-color:theme(colors.red.600)!important] has-[input:not(:placeholder-shown):valid]:border-green-600 has-[input:not(:placeholder-shown):valid]:[--highlight-color:theme(colors.green.600)!important]">
+                            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+                        </ion-input>
+                        <span
+                            class="absolute top-1/2 pointer-events-none -translate-y-1/2 group-has-[input:focus]:top-0 group-has-[input:not(:placeholder-shown)]:top-0 group-has-[input:focus]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:bg-shark-700 group-has-[input:not(:placeholder-shown)]:text-shark-100 opacity-100 px-1 rounded-sm leading-snug group-has-[input:focus]:text-shark-100 z-10 text-[#5d5f60] left-4 transition-all">
+                            Confirmar senha
+                        </span>
+                    </div>
+                </ion-card-content>
+
+                <ion-card-content>
+                    <ion-button type="submit" expand="block" fill="solid" shape="round">
+                        <span *ngIf="!signingup">Cadastrar</span>
+                        <ion-spinner *ngIf="signingup" name="crescent"></ion-spinner>
+                    </ion-button>
+                </ion-card-content>
+            </form>
+        </ion-card>
+    </ion-col>
+</ion-content>
