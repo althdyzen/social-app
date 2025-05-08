@@ -11,6 +11,8 @@ import { ToastService } from "src/app/services/toast/toast.service";
 })
 export class FeedPage implements OnInit {
 	posts: Post[] = [];
+	isLoading: boolean = true;
+
 	constructor(
 		private postService: PostService,
 		private toastService: ToastService,
@@ -20,9 +22,11 @@ export class FeedPage implements OnInit {
 		this.postService.getPosts().subscribe({
 			next: (posts: Post[]) => {
 				this.posts = posts;
+				this.isLoading = false;
 			},
 			error: (err) => {
 				this.toastService.presentToast({ message: "Ocorreu um erro ao carregar os posts.", color: "danger" });
+				this.isLoading = false;
 			},
 		});
 	}

@@ -1,7 +1,17 @@
 <div class="mt-16">
-    <profile-card [user]="user" />
+    <profile-card-skeleton *ngIf="isLoading" />
+    <profile-card *ngIf="!isLoading" [user]="user" />
     <div class="grow">
-        <post-card *ngFor="let post of user.posts" [authorName]="user.name" [authorNick]="user.nick"
-            [post]="post"></post-card>
+        <post-card-skeleton *ngIf="isLoading" />
+        <div *ngIf="!isLoading">
+            <post-card *ngFor="let post of user.posts | paginate: { itemsPerPage: 5, currentPage: p }"
+                [authorName]="user.name" [authorNick]="user.nick" [post]="post" />
+
+            <pagination-controls (pageChange)="p = $event" [autoHide]="true" previousLabel="Anterior"
+                nextLabel="Próximo" class="block w-max mx-auto [&_li:not(.current)>a]:text-white"></pagination-controls>
+        </div>
+        <div *ngIf="!isLoading && !user.posts" class="text-center mt-10 [text-shadow:_1px_1px_2px_#000;]">
+            Sem posts para mostrar
+        </div>
     </div>
 </div>

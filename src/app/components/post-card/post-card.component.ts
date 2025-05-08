@@ -1,7 +1,9 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, HostBinding, Input, OnInit } from "@angular/core";
 import { IonicModule } from "@ionic/angular";
 import { Post } from "src/app/models/post";
+import { NickPipe } from "src/app/pipes/nick/nick.pipe";
+import { PostDatePipe } from "src/app/pipes/post-date/post-date.pipe";
 import { PostService } from "src/app/services/post/post.service";
 import { ToastService } from "src/app/services/toast/toast.service";
 
@@ -9,9 +11,11 @@ import { ToastService } from "src/app/services/toast/toast.service";
 	selector: "post-card",
 	templateUrl: "./post-card.component.html",
 	styleUrls: ["./post-card.component.scss"],
-	imports: [CommonModule, IonicModule],
+	imports: [CommonModule, IonicModule, NickPipe, PostDatePipe],
 })
 export class PostCardComponent implements OnInit {
+	@HostBinding("class") class = "max-w-full";
+
 	@Input() post: Post = {} as Post;
 	@Input() authorName: string = "";
 	@Input() authorNick: string = "";

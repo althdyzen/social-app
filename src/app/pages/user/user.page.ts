@@ -11,7 +11,9 @@ import { UserService } from "src/app/services/user/user.service";
 	standalone: false,
 })
 export class UserPage implements OnInit {
+	p: number = 1;
 	user: User = {} as User;
+	isLoading: boolean = true;
 
 	constructor(
 		private userService: UserService,
@@ -26,10 +28,13 @@ export class UserPage implements OnInit {
 			this.userService.get(id).subscribe({
 				next: (user: User) => {
 					this.user = user;
+					this.isLoading = false;
 
 					this.titleService.setTitle(`@${this.user.nick} - Perfil`);
 				},
 				error: (err) => {
+					this.isLoading = false;
+
 					console.log(err);
 				},
 			});

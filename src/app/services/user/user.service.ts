@@ -3,6 +3,8 @@ import { Observable } from "rxjs";
 import { User } from "src/app/models/user";
 import { ApiService } from "src/app/services/api/api.service";
 import { AuthService } from "../auth/auth.service";
+import { ToastService } from "../toast/toast.service";
+import { Router } from "@angular/router";
 
 @Injectable({
 	providedIn: "root",
@@ -18,19 +20,7 @@ export class UserService {
 	}
 
 	login(user: User) {
-		return new Observable<void>((observer) => {
-			this.apiService.loginUser(user).subscribe({
-				next: (data: string) => {
-					this.authService.setToken(data);
-
-					observer.next();
-					observer.complete();
-				},
-				error: (err) => {
-					console.log(err);
-				},
-			});
-		});
+		return this.apiService.loginUser(user);
 	}
 
 	delete(userID: number) {

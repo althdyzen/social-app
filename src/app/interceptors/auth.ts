@@ -13,7 +13,9 @@ export function authInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
 	const isRegister = req.method === "POST" && req.url.endsWith("/users");
 	const isLogin = req.url.endsWith("/login");
 
-	if (isRegister || isLogin) return next(req);
+	if (isRegister || isLogin) {
+		return next(req);
+	}
 
 	const clonedRequest = req.clone({
 		headers: req.headers.set("Authorization", `Bearer ${authToken.getToken()}`),

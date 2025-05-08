@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
+import { AuthService } from "src/app/services/auth/auth.service";
 import { ToastService } from "src/app/services/toast/toast.service";
 import { UserService } from "src/app/services/user/user.service";
 
@@ -17,10 +19,14 @@ export class SigninPage implements OnInit {
 		private formBuilder: FormBuilder,
 		private toastService: ToastService,
 		private userService: UserService,
+		private authService: AuthService,
 		private router: Router,
+		private titleServce: Title,
 	) {}
 
 	ngOnInit() {
+		this.titleServce.setTitle("Entrar - Social Network");
+
 		this.signInForm = this.formBuilder.group({
 			email: ["", [Validators.required, Validators.email]],
 			password: ["", [Validators.required]],
@@ -37,10 +43,18 @@ export class SigninPage implements OnInit {
 		this.signingIn = true;
 
 		this.userService.login(this.signInForm.value).subscribe({
-			next: () => {
+			next: (data) => {
 				this.toastService.presentToast({ message: "Login realizado com sucesso!", color: "success" });
 				this.signingIn = false;
+				this.authService.setToken(data);
 				this.router.navigate(["/feed"]);
+			},
+			error: (err) => {
+				if (err.statusText === "Unauthorized") {
+					this.toastService.presentToast({ message: "Verifique seu email e senha e tente novamente" });
+				}
+
+				this.signingIn = false;
 			},
 		});
 	}
