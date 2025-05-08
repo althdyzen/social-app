@@ -2,7 +2,11 @@
 /* http://ionicframework.com/docs/theming/ */
 
 :root {
-    --bg-stacked-peaks: url("/assets/bg-stacked-peaks.svg");
-    --bg-waves: url("/assets/bg-waves.svg");
-    --bg-blob-scene: url("/assets/blob-scene-haikei.svg");
+    // --bg-stacked-peaks: url("/assets/bg-stacked-peaks.svg");
+    // --bg-waves: url("/assets/bg-waves.svg");
+    // --bg-blob-scene: url("/assets/blob-scene-haikei.svg");
+
+    --bg-stacked-peaks: url("/app/assets/bg-stacked-peaks.svg");
+    --bg-waves: url("/app/assets/bg-waves.svg");
+    --bg-blob-scene: url("/app/assets/blob-scene-haikei.svg");
 }

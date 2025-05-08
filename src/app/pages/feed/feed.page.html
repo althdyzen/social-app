@@ -6,7 +6,7 @@
         <div *ngIf="!isLoading">
             <post-card *ngFor="let post of posts" [post]="post" class="basis-full last:mb-2.5" />
         </div>
-        <div *ngIf="!isLoading && !posts">
+        <div *ngIf="!isLoading && !posts" class="text-center">
             Sem posts para mostrar
         </div>
     </div>
