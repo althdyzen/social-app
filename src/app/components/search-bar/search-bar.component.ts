@@ -18,7 +18,6 @@ export class SearchBarComponent implements OnInit {
 	ngOnInit() {}
 
 	search(event: CustomEvent) {
-		console.log(event.detail.value);
 		this.userService.search(event.detail.value).subscribe({
 			next: (users: User[]) => {
 				this.users = users;

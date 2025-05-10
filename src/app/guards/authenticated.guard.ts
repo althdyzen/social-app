@@ -7,7 +7,13 @@ export const authenticatedGuard: CanActivateFn = (route, state) => {
 	const router = inject(Router);
 
 	if (!authService.hasToken()) {
+		console.log("Não tem token");
 		router.navigate(["/signin"]);
+		return false;
+	}
+
+	if (state.url === "/") {
+		router.navigate(["/feed"]);
 		return false;
 	}
 

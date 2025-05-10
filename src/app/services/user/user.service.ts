@@ -31,10 +31,6 @@ export class UserService {
 		this.authService.removeToken();
 	}
 
-	getMe() {
-		return this.apiService.getUserMe();
-	}
-
 	get(userID: number) {
 		return this.apiService.getUser(userID);
 	}

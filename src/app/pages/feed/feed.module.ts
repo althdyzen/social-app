@@ -6,8 +6,8 @@ import { IonicModule } from "@ionic/angular";
 
 import { FeedPageRoutingModule } from "./feed-routing.module";
 
-import { CreatePostCardComponent } from "../../components/create-post-card/create-post-card.component";
-import { PostCardComponent } from "../../components/post-card/post-card.component";
+import { CreatePostCardComponent } from "src/app/components/create-post-card/create-post-card.component";
+import { PostCardComponent } from "src/app/components/post-card/post-card.component";
 import { FeedPage } from "./feed.page";
 import { PostCardSkeletonComponent } from "src/app/components/post-card-skeleton/post-card-skeleton.component";
 

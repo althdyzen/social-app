@@ -7,7 +7,7 @@
     <ion-list lines="none" mode="ios"
         class="top-full absolute w-full bg-cod-gray-950/50 backdrop-blur-lg border border-t-0 border-mine-shaft-800 invisible opacity-0 peer-focus-within:opacity-100 peer-focus-within:visible peer-[:not(:focus-within)]:bg-mine-shaft-950 z-10 transition-all rounded-b-xl shadow-lg py-2">
         @for (user of users; track user) {
-        <a routerLink="/user/{{ user.id }}">
+        <a [routerLink]="['/user', user.id]">
             <ion-item class="[--background:none] hover:[--background:theme(colors.white/.1)] space-x-3">
                 <!-- <ion-img src="assets/hiro.jpg" class="w-9 rounded-full overflow-hidden"></ion-img> -->
                 <ion-icon name="person-circle-outline" class="w-9 rounded-full overflow-hidden"></ion-icon>

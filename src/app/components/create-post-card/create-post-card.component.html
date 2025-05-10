@@ -26,8 +26,8 @@
         </div>
         <div>
             <ion-button type="submit" expand="block" fill="solid" shape="round">
-                <span *ngIf="true">Postar</span>
-                <ion-spinner *ngIf="false" name="crescent"></ion-spinner>
+                <span *ngIf="!isLoading">Postar</span>
+                <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
             </ion-button>
         </div>
     </form>

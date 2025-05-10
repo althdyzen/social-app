@@ -27,6 +27,12 @@ export class UserPage implements OnInit {
 
 			this.userService.get(id).subscribe({
 				next: (user: User) => {
+					if (id !== 0) {
+						user.posts?.map((p) => {
+							p.isAuthor = false;
+						});
+					}
+
 					this.user = user;
 					this.isLoading = false;
 

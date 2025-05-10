@@ -11,10 +11,7 @@ import { environment } from "src/environments/environment";
 export class ApiService {
 	private apiUrl = environment.API_URL;
 
-	constructor(
-		private http: HttpClient,
-		private authService: AuthService,
-	) {}
+	constructor(private http: HttpClient) {}
 
 	createUser(user: User) {
 		const apiRoute = `${this.apiUrl}/users`;
@@ -46,22 +43,10 @@ export class ApiService {
 		return this.http.get<Post[]>(apiRoute);
 	}
 
-	getPostsMe() {
-		const apiRoute = `${this.apiUrl}/posts/me`;
-
-		return this.http.get<Post[]>(apiRoute);
-	}
-
 	likePost(postID: number) {
 		const apiRoute = `${this.apiUrl}/posts/${postID}/like`;
 
 		return this.http.post<null>(apiRoute, null);
-	}
-
-	getUserMe() {
-		const apiRoute = `${this.apiUrl}/users/me`;
-
-		return this.http.get<User>(apiRoute);
 	}
 
 	getUser(userID: number) {
@@ -76,12 +61,6 @@ export class ApiService {
 		return this.http.get<User[]>(apiRoute);
 	}
 
-	// getPostByUser(userID: number) {
-	// 	const apiRoute = `${this.apiUrl}/users/${userID}/posts`;
-
-	// 	return this.http.get<any>(apiRoute);
-	// }
-
 	followUser(userID: number) {
 		const apiRoute = `${this.apiUrl}/users/${userID}/follow`;
 
@@ -92,23 +71,5 @@ export class ApiService {
 		const apiRoute = `${this.apiUrl}/users/${userID}/unfollow`;
 
 		return this.http.post<null>(apiRoute, null);
-	}
-
-	// getUserFollowers(userID: number) {
-	// 	const apiRoute = `${this.apiUrl}/users/${userID}/followers`;
-
-	// 	return this.http.get<any>(apiRoute);
-	// }
-
-	// getUserFollowing(userID: number) {
-	// 	const apiRoute = `${this.apiUrl}/users/${userID}/following`;
-
-	// 	return this.http.get<any>(apiRoute);
-	// }
-
-	getHeaders() {
-		return new HttpHeaders({
-			Authorization: `Bearer ${this.authService.getToken()}`,
-		});
 	}
 }

@@ -6,5 +6,7 @@ export function loggerInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn
 	console.log(req);
 	console.groupEnd();
 
-	return next(req).pipe(delay(1000));
+	const randDelay = Math.floor(Math.random() * 1000);
+
+	return next(req).pipe(delay(randDelay));
 }
