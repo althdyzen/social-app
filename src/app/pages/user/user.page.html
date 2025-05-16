@@ -8,7 +8,8 @@
                 [authorName]="user.name" [authorNick]="user.nick" [post]="post" />
 
             <pagination-controls (pageChange)="p = $event" [autoHide]="true" previousLabel="Anterior"
-                nextLabel="Próximo" class="block w-max mx-auto [&_li:not(.current)>a]:text-white"></pagination-controls>
+                nextLabel="Próximo"
+                class="block w-max mx-auto [&_ul]:space-x-1 [&_li]:!rounded-md [&_li]:overflow-hidden [&_li:not(.current)>a:hover]:bg-cod-gray-950/50 [&_li:not(.current)>a]:text-white"></pagination-controls>
         </div>
         <div *ngIf="!isLoading && !user.posts" class="text-center mt-10 [text-shadow:_1px_1px_2px_#000;]">
             Sem posts para mostrar
