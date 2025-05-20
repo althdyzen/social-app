@@ -27,7 +27,7 @@
             <ion-icon *ngIf="!post.isAuthor" name="heart-outline" (click)="like()"
                 class="text-shark-300 text-3xl cursor-pointer select-none"></ion-icon>
             <ion-icon *ngIf="true" name="heart"
-                class="text-rose-700 text-3xl cursor-pointer select-none absolute inset-0 scale-105 transition-all pointer-events-none {{ isLiking ? 'opacity-100' : 'opacity-0' }}"></ion-icon>
+                class="text-rose-700 text-3xl cursor-pointer select-none absolute inset-0 scale-105 transition-all pointer-events-none {{ isLiking ? 'opacity-100 scale-110' : 'opacity-0' }}"></ion-icon>
         </div>
         <div class="space-x-2">
             <span class="font-bold">{{ post.likes }}</span>
