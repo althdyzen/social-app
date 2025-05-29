@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Post } from "src/app/models/post";
+import { TokenData } from "src/app/models/token";
 import { User } from "src/app/models/user";
-import { AuthService } from "src/app/services/auth/auth.service";
 import { environment } from "src/environments/environment";
 
 @Injectable({

@@ -24,10 +24,14 @@ export class FeedPage implements OnInit {
 				this.posts = posts;
 				this.isLoading = false;
 			},
-			error: (err) => {
+			error: () => {
 				this.toastService.presentToast({ message: "Ocorreu um erro ao carregar os posts.", color: "danger" });
 				this.isLoading = false;
 			},
 		});
+	}
+
+	onPostCreated(post: Post) {
+		this.posts.unshift(post);
 	}
 }

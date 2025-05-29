@@ -5,7 +5,7 @@
         <post-card-skeleton *ngIf="isLoading" />
         <div *ngIf="!isLoading">
             <post-card *ngFor="let post of user.posts | paginate: { itemsPerPage: 5, currentPage: p }"
-                [authorName]="user.name" [authorNick]="user.nick" [post]="post" />
+                [authorName]="user.name" [authorNick]="user.nick" [user]="user" [post]="post" />
 
             <pagination-controls (pageChange)="p = $event" [autoHide]="true" previousLabel="Anterior"
                 nextLabel="Próximo"

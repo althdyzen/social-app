@@ -1,5 +1,5 @@
 <div class="overflow-auto mt-14">
-    <create-post-card class="block overflow-auto" />
+    <create-post-card (postCreated)="onPostCreated($event)" class="block overflow-auto" />
     <hr class="w-4/5 mx-auto border-shark-500">
     <div class="flex justify-center items-stretch flex-col min-h-36">
         <post-card-skeleton *ngIf="isLoading" />

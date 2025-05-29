@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
+import { createGesture } from "@ionic/angular";
+import { TokenData } from "src/app/models/token";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { ToastService } from "src/app/services/toast/toast.service";
 import { UserService } from "src/app/services/user/user.service";
@@ -50,6 +52,8 @@ export class SigninPage implements OnInit {
 				this.router.navigate(["/feed"]);
 			},
 			error: (err) => {
+				this.toastService.presentToast({ message: err.error.error });
+
 				if (err.statusText === "Unauthorized") {
 					this.toastService.presentToast({ message: "Verifique seu email e senha e tente novamente" });
 				}

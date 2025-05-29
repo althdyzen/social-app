@@ -1,7 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 import { Post } from "src/app/models/post";
 import { PostService } from "src/app/services/post/post.service";
@@ -16,6 +15,9 @@ import { ToastService } from "src/app/services/toast/toast.service";
 export class CreatePostCardComponent implements OnInit {
 	postForm!: FormGroup;
 	isLoading: boolean = false;
+
+	@Output() postCreated = new EventEmitter<Post>();
+
 	constructor(
 		private formBuilder: FormBuilder,
 		private postService: PostService,
@@ -42,7 +44,6 @@ export class CreatePostCardComponent implements OnInit {
 
 				this.isLoading = false;
 				this.postForm.reset();
-				setTimeout(() => window.location.reload(), 1000);
 			},
 			error: (err) => {
 				this.toastService.presentToast({ message: "Ocorreu um erro ao criar o post.", color: "danger" });

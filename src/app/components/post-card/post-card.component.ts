@@ -4,6 +4,7 @@ import { Router } from "@angular/router";
 import { IonicModule } from "@ionic/angular";
 import { ExpandOnclickDirective } from "src/app/directives/expand-onclick/expand-onclick.directive";
 import { Post } from "src/app/models/post";
+import { User } from "src/app/models/user";
 import { NickPipe } from "src/app/pipes/nick/nick.pipe";
 import { PostDatePipe } from "src/app/pipes/post-date/post-date.pipe";
 import { PostService } from "src/app/services/post/post.service";
@@ -19,6 +20,8 @@ export class PostCardComponent implements OnInit {
 	@HostBinding("class") class = "max-w-full w-full";
 
 	@Input() post: Post = {} as Post;
+	@Input() user: User = {} as User;
+
 	@Input() authorName: string = "";
 	@Input() authorNick: string = "";
 	isLiking: boolean = false;
@@ -47,9 +50,5 @@ export class PostCardComponent implements OnInit {
 				this.toastService.presentToast({ message: "Ocorreu um erro ao curtir o post." });
 			},
 		});
-	}
-
-	openPost() {
-		this.router.navigate(["post", this.post.id]);
 	}
 }

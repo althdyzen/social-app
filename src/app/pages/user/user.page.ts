@@ -22,28 +22,20 @@ export class UserPage implements OnInit {
 	) {}
 
 	ngOnInit() {
-		this.route.paramMap.subscribe((params) => {
-			const id = Number(params.get("userID"));
+		this.user.id = Number(this.route.snapshot.paramMap.get("userID"));
 
-			this.userService.get(id).subscribe({
-				next: (user: User) => {
-					if (id !== 0) {
-						user.posts?.map((p) => {
-							p.isAuthor = false;
-						});
-					}
+		this.userService.get(this.user.id).subscribe({
+			next: (user: User) => {
+				this.user = user;
+				this.isLoading = false;
 
-					this.user = user;
-					this.isLoading = false;
+				this.titleService.setTitle(`@${this.user.nick} - Perfil`);
+			},
+			error: (err) => {
+				this.isLoading = false;
 
-					this.titleService.setTitle(`@${this.user.nick} - Perfil`);
-				},
-				error: (err) => {
-					this.isLoading = false;
-
-					console.log(err);
-				},
-			});
+				console.log(err);
+			},
 		});
 	}
 }
