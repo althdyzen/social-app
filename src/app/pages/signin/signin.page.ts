@@ -51,12 +51,12 @@ export class SigninPage implements OnInit {
 				this.authService.setToken(data);
 				this.router.navigate(["/feed"]);
 
-                this.signingIn = false
+				this.signingIn = false;
 			},
 			error: (err) => {
 				this.toastService.presentToast({ message: err.error.error });
 
-				if (err.statusText === "Unauthorized") {
+				if (err.statusText === "Unauthorized" || err.status === 401) {
 					this.toastService.presentToast({ message: "Verifique seu email e senha e tente novamente" });
 				}
 
