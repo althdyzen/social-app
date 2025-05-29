@@ -5,7 +5,11 @@
 
 
 - ✅ O projeto deve ser montado com, no mínimo, 2 pages, incluindo a home.page.html comum ao ionic. - 1 ponto - Diogo
+<<<<<<< HEAD
   - [Home](/src/app/pages/home)
+=======
+  <!-- - [Home](/src/app/pages/home) -->
+>>>>>>> 36df841063ca5cd20df341da29348e3c9990a1c3
   - [Sign Up](/src/app/pages/signup)
   - [Sign In](/src/app/pages/signin)
   - [Feed](/src/app/pages/feed)
@@ -33,6 +37,7 @@
 
 ## Extras
 
+<<<<<<< HEAD
 - ✅ Montar uma terceira tela que use transferência de parâmetros por rotas - 1 ponto (routerLink, ou biblioteca navigate) - Mariana
   - [Searchbar](/src/app/components/search-bar/search-bar.component.html#routerLink) > [UserPage](/src/app/pages/user/user.page.ts)
 
@@ -44,3 +49,16 @@
 
 - ✅ Criar uma funcionalidade diferente além de capturar os dados de uma API (um segundo service) - 1 ponto - Yasmin
   - [ToastService](/src/app/services/toast/toast.service.ts)
+=======
+- ✅ Montar uma terceira tela que use transferência de parâmetros por rotas - 1 ponto (routerLink, ou biblioteca navigate) - Yasmin
+  - [Searchbar](/src/app/components/search-bar/search-bar.component.html#routerLink) > [UserPage](/src/app/pages/user/user.page.ts)
+
+- ✅ Integrar com backend - 1 ponto - Yasmin
+  - [API Service](/src/app/services/api/api.service.ts)
+
+- ✅ Pagination - 1 ponto - Mariana
+  - [UserPage](/src/app/pages/user/user.page.html#paginate)
+
+- ✅ Criar uma funcionalidade diferente além de capturar os dados de uma API (um segundo service) - 1 ponto - Mariana
+  - [ToastService](/src/app/services/toast/toast.service.ts)
+>>>>>>> 36df841063ca5cd20df341da29348e3c9990a1c3

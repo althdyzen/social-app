@@ -5,12 +5,13 @@ import { IonicModule } from "@ionic/angular";
 import { User } from "src/app/models/user";
 import { ToastService } from "src/app/services/toast/toast.service";
 import { UserService } from "src/app/services/user/user.service";
+import { ProfileCardSkeletonComponent } from "../profile-card-skeleton/profile-card-skeleton.component";
 
 @Component({
 	selector: "profile-card",
 	templateUrl: "./profile-card.component.html",
 	styleUrls: ["./profile-card.component.scss"],
-	imports: [CommonModule, IonicModule],
+	imports: [CommonModule, IonicModule, ProfileCardSkeletonComponent],
 })
 export class ProfileCardComponent implements OnInit {
 	@Input() user!: User;

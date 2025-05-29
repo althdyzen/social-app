@@ -4,9 +4,15 @@
 
 export const environment = {
 	production: false,
+<<<<<<< HEAD
 	// API_URL: "http://localhost:5000",
 	API_URL: "https://gabriel.tailb6a2e.ts.net/api",
 	// API_URL: "http://127.0.0.1:8000/api",
+=======
+	API_URL: "http://localhost:5000",
+	// API_URL: "https://gabriel.tailb6a2e.ts.net/api",
+	// API_URL: "http://127.0.0.1:8000/api/",
+>>>>>>> 36df841063ca5cd20df341da29348e3c9990a1c3
 };
 
 /*

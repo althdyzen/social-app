@@ -46,10 +46,12 @@ export class SigninPage implements OnInit {
 
 		this.userService.login(this.signInForm.value).subscribe({
 			next: (data) => {
-				this.toastService.presentToast({ message: "Login realizado com sucesso!", color: "success" });
+				this.toastService.presentToast({ message: "Login realizado!", color: "success" });
 				this.signingIn = false;
 				this.authService.setToken(data);
 				this.router.navigate(["/feed"]);
+
+                this.signingIn = false
 			},
 			error: (err) => {
 				this.toastService.presentToast({ message: err.error.error });

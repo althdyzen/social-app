@@ -42,25 +42,31 @@ export class SignupPage implements OnInit {
 	}
 
 	signup() {
-		if (this.signUpForm.invalid) {
-			const message = this.signUpForm.errors?.["errorText"] || "Preencha todos os campos corretamente.";
-			this.toastService.presentToast({ message: message, color: "danger" });
+        const values = this.signUpForm.value
 
+        if (values.password !== values.confirmPassword) {
+			this.toastService.presentToast({ message: "Senhas não coincidem", color: "danger" });
 			return;
+        }
+
+		if (this.signUpForm.invalid) {
+			this.toastService.presentToast({ message:  "Preencha todos os campos corretamente.", color: "danger" });
+			return
 		}
 		this.signingup = true;
 
 		this.userService.create(this.signUpForm.value).subscribe({
 			next: (user: User) => {
+                this.toastService.presentToast({ message: "Conta criada.", color: "success" });
 				this.signingup = false;
 				this.router.navigate(["/signin"]);
 			},
 			error: (err) => {
 				const erro = err.error.erro;
-				const duplicate = erro.includes("Duplicate entry");
+				const duplicate = erro?.includes("Duplicate entry");
 
 				if (duplicate) {
-					this.helperText = "Usuário e/ou email já em uso.";
+					this.helperText = "Apelido e/ou email já em uso.";
 				}
 
 				if (!duplicate) {
